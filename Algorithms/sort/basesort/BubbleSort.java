@@ -1,4 +1,6 @@
-package Algorithms.sort;
+package Algorithms.sort.basesort;
+
+import Algorithms.sort.Sort;
 
 /**
  * @Author: 摇井

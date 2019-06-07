@@ -1,4 +1,6 @@
-package Algorithms.sort;
+package Algorithms.sort.basesort;
+
+import Algorithms.sort.Sort;
 
 /**
  * @Author: 摇井
@@ -6,13 +8,13 @@ package Algorithms.sort;
  * @Description:   选择排序
  */
 public class SelectSort extends Sort {
-    public  static void sort(Comparable[] arr){
-        for (int i = 0; i < arr.length-1; i++) {
-            int min=i;
-            for (int j = i+1; j <arr.length ; j++) {
-                if (less(arr[j],arr[min])) min=j;
+    public static void sort(Comparable[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (less(arr[j], arr[min])) min = j;
             }
-            exchange(arr,i,min);
+            exchange(arr, i, min);
         }
     }
 }

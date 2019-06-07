@@ -1,11 +1,13 @@
-package Algorithms.sort;
+package Algorithms.sort.basesort;
+
+import Algorithms.sort.Sort;
 
 /**
  * @Author: 摇井
  * @CreateDate: Created in 2019/6/7 00:43
  * @Description:
  */
-public class ShellSort extends Sort{
+public class ShellSort extends Sort {
     public  static void sort(Comparable[] arr){
         int N=arr.length;
         int h=1;
