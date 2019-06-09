@@ -4,6 +4,7 @@ import Algorithms.sort.basesort.BubbleSort;
 import Algorithms.sort.basesort.InsertSort;
 import Algorithms.sort.basesort.SelectSort;
 import Algorithms.sort.mergesort.MergeSort;
+import Algorithms.sort.quicksort.QuickSort;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 

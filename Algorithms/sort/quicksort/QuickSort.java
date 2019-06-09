@@ -1,4 +1,6 @@
-package Algorithms.sort;
+package Algorithms.sort.quicksort;
+
+import Algorithms.sort.Sort;
 
 /**
  * @Author: 摇井
@@ -12,6 +14,7 @@ public class QuickSort extends Sort {
 
     private static void sortAll(Comparable[] arr, int L, int R) {
         if(L<R){
+            exchange(arr,(int)Math.random()*(R-L+1),R);
             int[] pos=postions(arr,L,R);
             sortAll(arr,L,pos[0]);
             sortAll(arr,pos[1],R);
