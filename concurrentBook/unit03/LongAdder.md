@@ -29,7 +29,7 @@
                     }
                     collide = false;
                 }
-                else if (!wasUncontended)       // CAS already known to fail
+                else if (!wasUncontended)       
                     wasUncontended = true;      // Continue after rehash
                     
                  //对Cell进行csa操作，更新他的值
