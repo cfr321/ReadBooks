@@ -3,6 +3,7 @@ package Algorithms.sort;
 import Algorithms.sort.basesort.BubbleSort;
 import Algorithms.sort.basesort.InsertSort;
 import Algorithms.sort.basesort.SelectSort;
+import Algorithms.sort.heapsort.HeapSort;
 import Algorithms.sort.mergesort.MergeSort;
 import Algorithms.sort.quicksort.QuickSort;
 import edu.princeton.cs.algs4.StdRandom;
@@ -21,6 +22,7 @@ public class SortCompare {
         if(sortName.equals("Bubble")) BubbleSort.sort(a);
         if(sortName.equals("Quick")) QuickSort.sort(a);
         if(sortName.equals("Merge")) MergeSort.sort2(a);
+        if(sortName.equals("Heap")) HeapSort.sort(a);
         return timer.elapsedTime();
     }
     public static double timeRandomInput(String alg,int N,int T){
@@ -42,10 +44,11 @@ public class SortCompare {
      *
      * Merge:  0.04800000000000003
      * Quick:  0.04200000000000002
+     * Heap:   0.04   Heap: 0.03  Heap: 0.02 //最快。。。
      * @param args
      */
     public static void main(String[] args) {
-        double insert = timeRandomInput("Merge", 1000, 100);
-        System.out.println("Merge: "+insert);
+        double insert = timeRandomInput("Quick", 1000, 100);
+        System.out.println("Quick: "+insert);
     }
 }

@@ -1,6 +1,6 @@
 package Algorithms.sort;
 
-import Algorithms.sort.mergesort.MergeSort;
+import Algorithms.sort.quicksort.QuickSort;
 
 import java.util.Arrays;
 
@@ -30,7 +30,7 @@ public  class Sort {
 
     public static void main(String[] args) {
         Integer[] integers = {4, 6, 0,2,6,7,9,1,7, 1, 2};
-        MergeSort.sort2(integers);
-        MergeSort.show(integers);
+        QuickSort.sort(integers);
+        QuickSort.show(integers);
     }
 }

@@ -1,4 +1,4 @@
-package concurrentBook.unit03;
+package concurrentBook.lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
