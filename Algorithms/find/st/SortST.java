@@ -11,7 +11,7 @@ public class SortST<Key extends Comparable<Key>, Value> {
     private Key[] keys;
     private Value[] values;
     private int capacity = 10;
-    private int size=0;
+    private int size = 0;
 
     public SortST(int capacity) {
         this.capacity = capacity;
@@ -24,51 +24,57 @@ public class SortST<Key extends Comparable<Key>, Value> {
     }
 
     public Value get(Key key) {
-        if(isEmpty()) return null;
+        if (isEmpty()) return null;
         int rank = rank(key);
-        if(rank<size && keys[rank].equals(key))
+        if (rank < size && keys[rank].equals(key))
             return values[rank];
         else
             return null;
     }
-    public void put(Key key,Value value){
+
+    public void put(Key key, Value value) {
         int l = rank(key);
-        if(l<size && keys[l].equals(key))
-            values[l]=value;
-        if(size==capacity)
+        if (l < size && keys[l].equals(key))
+            values[l] = value;
+        if (size == capacity)
             growup();
-        for (int i = size; i >l; i--) {
-            keys[i]=keys[i-1];
-            values[i]=values[i-1];
+        for (int i = size; i > l; i--) {
+            keys[i] = keys[i - 1];
+            values[i] = values[i - 1];
         }
-        keys[l]=key;values[l]=value;
+        keys[l] = key;
+        values[l] = value;
         size++;
     }
-    public void delete(Key key){
+
+    public void delete(Key key) {
         int l = rank(key);
-        if(l<size && keys[l].equals(key)){
-            for (int i = l; i <size-1; i++) {
-                keys[i]=keys[i+1];
-                values[i]=values[i+1];
+        if (l < size && keys[l].equals(key)) {
+            for (int i = l; i < size - 1; i++) {
+                keys[i] = keys[i + 1];
+                values[i] = values[i + 1];
             }
             size--;
         }
     }
-    public Key select(int k){
+
+    public Key select(int k) {
         return keys[k];
     }
-    
+
 
     private void growup() {
-        capacity=capacity<<1;
+        capacity = capacity << 1;
         this.keys = Arrays.copyOf(this.keys, capacity);
-        this.values=Arrays.copyOf(this.values,capacity);
+        this.values = Arrays.copyOf(this.values, capacity);
     }
 
-    public boolean isEmpty(){
-        return size==0;
+    public boolean isEmpty() {
+        return size == 0;
     }
+
     public int rank(Key key) {
+
         int l = 0, r = size - 1;
         while (l <= r) {
             int mid = (l + r) / 2;
