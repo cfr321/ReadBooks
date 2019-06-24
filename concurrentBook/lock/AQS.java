@@ -13,7 +13,7 @@ import java.util.concurrent.locks.Lock;
 public class AQS implements Lock {
 
     /*
-    AQS是锁的基础，里面又独占和共享两种模式，而ReentrantLock是它独占锁的实现
+     AQS是锁的基础，里面又独占和共享两种模式，而ReentrantLock是它独占锁的实现
      ReentrantReadWriteLock是它独占和共享锁的实现。
      */
     /*

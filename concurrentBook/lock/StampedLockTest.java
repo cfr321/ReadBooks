@@ -21,7 +21,7 @@ public class StampedLockTest {
         long l = lock.tryOptimisticRead(); //无锁获取
         double currentX=x,currentY=y;
         if(lock.validate(l)){  //判断版本是否可用
-            long l1 = lock.readLock();
+            long l1 = lock.writeLock();
             try {
                 currentX=x;
                 currentY=y;

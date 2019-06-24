@@ -13,6 +13,7 @@ public class SortST<Key extends Comparable<Key>, Value> {
     private int capacity = 10;
     private int size = 0;
 
+    @SuppressWarnings("unchecked")
     public SortST(int capacity) {
         this.capacity = capacity;
         keys = (Key[]) new Comparable[capacity];
@@ -83,6 +84,7 @@ public class SortST<Key extends Comparable<Key>, Value> {
             else if (i < 0) r = mid - 1;
             else return mid;
         }
+
         //这个l一定是下一个比 key大位置
         return l;
     }

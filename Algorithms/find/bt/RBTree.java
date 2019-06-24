@@ -1,5 +1,7 @@
 package Algorithms.find.bt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.NoSuchElementException;
 
 /**
@@ -24,6 +26,7 @@ public class RBTree<K extends Comparable<K>, V> {
         boolean color;
         int N;
 
+
         Node(K k, V v, boolean color, int n) {
             this.k = k;
             this.v = v;
@@ -31,6 +34,7 @@ public class RBTree<K extends Comparable<K>, V> {
             N = n;
         }
     }
+
 
     private boolean isRed(Node node) {
         if (node == null) return false;
@@ -41,6 +45,7 @@ public class RBTree<K extends Comparable<K>, V> {
     public int size() {
         return size(root);
     }
+
     public boolean isEmpty() {
         return root == null;
     }
@@ -84,6 +89,7 @@ public class RBTree<K extends Comparable<K>, V> {
         root.color = BLACK;
     }
 
+
     private Node put(Node node, K k, V v) {
         if (node == null) return new Node(k, v, RED, 1);
         int i = k.compareTo((K) node.k);
@@ -102,143 +108,144 @@ public class RBTree<K extends Comparable<K>, V> {
         return node;
     }
 
-    public void deleteMin(){
+    public void deleteMin() {
         if (isEmpty()) throw new NoSuchElementException("root is empty");
-        if(!isRed(root.right) && !isRed(root.left)){
-            root.color=RED;
+        if (!isRed(root.right) && !isRed(root.left)) {
+            root.color = RED;
         }
-        root=deleteMin(root);
-        if(!isEmpty())
-            root.color=BLACK;
+        root = deleteMin(root);
+        if (!isEmpty())
+            root.color = BLACK;
     }
 
     private Node deleteMin(Node node) {
         //没左必定没右
-        if(node.left==null)
+        if (node.left == null)
             return null;
-        if(!isRed(node.left) && !isRed(node.left.left)){
-            node=moveRedLeft(node);
+        if (!isRed(node.left) && !isRed(node.left.left)) {
+            node = moveRedLeft(node);
         }
-        node.left=deleteMin(node.left);
+        node.left = deleteMin(node.left);
         return balance(node);
     }
 
     private Node balance(Node node) {
-        if(isRed(node.right)) node=roLeft(node);
-        if(isRed(node.right) && !isRed(node.left)) node=roLeft(node);
-        if(isRed(node.left) && isRed(node.left.left)) node=roRight(node);
-        if(isRed(node.left) && isRed(node.right)) flipColors(node);
-        node.N=size(node.left)+size(node.right)+1;
+        if (isRed(node.right)) node = roLeft(node);
+        if (isRed(node.right) && !isRed(node.left)) node = roLeft(node);
+        if (isRed(node.left) && isRed(node.left.left)) node = roRight(node);
+        if (isRed(node.left) && isRed(node.right)) flipColors(node);
+        node.N = size(node.left) + size(node.right) + 1;
         return node;
     }
 
     private Node moveRedLeft(Node node) {
         flipColors(node);
-        if(isRed(node.left.right)){
-            node.right=roRight(node.right);
-            node=roLeft(node.left);
+        if (isRed(node.left.right)) {
+            node.right = roRight(node.right);
+            node = roLeft(node.left);
         }
         return node;
     }
 
-    public void deleteMax(){
+    public void deleteMax() {
         if (isEmpty()) throw new NoSuchElementException("root is empty");
-        if(!isRed(root.right) && !isRed(root.left)){
-            root.color=RED;
+        if (!isRed(root.right) && !isRed(root.left)) {
+            root.color = RED;
         }
-        root=deleteMax(root);
-        if(!isEmpty())
-            root.color=BLACK;
+        root = deleteMax(root);
+        if (!isEmpty())
+            root.color = BLACK;
     }
 
     private Node deleteMax(Node node) {
         //把左的变成右的
-        if(isRed(node.left))
-            node=roRight(node);
+        if (isRed(node.left))
+            node = roRight(node);
         //那么没右必然没左
-        if(node.right==null)
+        if (node.right == null)
             return null;
         //左边没有红
-        if(!isRed(node.right) && !isRed(node.right.left)){ //node.right.left是即将旋转过来的
-            node=moveRedRight(node);
+        if (!isRed(node.right) && !isRed(node.right.left)) { //node.right.left是即将旋转过来的
+            node = moveRedRight(node);
         }
-        node.right=deleteMax(node.right);
+        node.right = deleteMax(node.right);
         return balance(node);
     }
 
     private Node moveRedRight(Node node) {
         flipColors(node);
-        if(isRed(node.left.left)){
-            node=roRight(node);
+        if (isRed(node.left.left)) {
+            node = roRight(node);
         }
         return node;
     }
 
-    public void delete(K k){
+    public void delete(K k) {
         if (isEmpty()) throw new NoSuchElementException("root is empty");
-        if(!isRed(root.right) && !isRed(root.left)){
-            root.color=RED;
+        if (!isRed(root.right) && !isRed(root.left)) {
+            root.color = RED;
         }
-        root=delete(root,k);
-        if(!isEmpty())
-            root.color=BLACK;
+        root = delete(root, k);
+        if (!isEmpty())
+            root.color = BLACK;
     }
 
-    private Node delete(Node node,K k) {
+
+    private Node delete(Node node, @NotNull K k) {
         int i = k.compareTo((K) node.k);
-        if(i<0){
+        if (i < 0) {
             if (!isRed(node.left) && !isRed(node.left.left))
-                node=moveRedLeft(node);
-            node.left=delete(node.left,k);
-        }else {
-            if(isRed(node.left))
+                node = moveRedLeft(node);
+            node.left = delete(node.left, k);
+        } else {
+            if (isRed(node.left))
                 roRight(node);
-            if(i==0 && node.right==null)
+            if (i == 0 && node.right == null)
                 return null;
-            if(!isRed(node.right) && !isRed(node.right.left))
-                node=moveRedRight(node);
-            if(i==0){
-                Node min=getMin(node.right); //thr node.right not null
-                node.k=min.k;
-                node.v=min.v;
-                node.right=deleteMin(node.right);
-            }else {
-                node.right=delete(node.right,k);
+            if (!isRed(node.right) && !isRed(node.right.left))
+                node = moveRedRight(node);
+            if (i == 0) {
+                Node min = getMin(node.right); //thr node.right not null
+                node.k = min.k;
+                node.v = min.v;
+                node.right = deleteMin(node.right);
+            } else {
+                node.right = delete(node.right, k);
             }
         }
         return balance(node);
     }
 
     private Node getMin(Node right) {
-        while (right.left!=null){
-            right=right.left;
+        while (right.left != null) {
+            right = right.left;
         }
         return right;
     }
 
-    public V get(K k){
-        Node node=root;
-        while (node!=null){
+    public V get(K k) {
+        Node node = root;
+        while (node != null) {
             int i = k.compareTo((K) node.k);
-            if(i==0) return (V) node.v;
-            else if(i>0) node=node.right;
-            else node=node.left;
+            if (i == 0) return (V) node.v;
+            else if (i > 0) node = node.right;
+            else node = node.left;
         }
         return null;
     }
 
-    public K max(){
-        Node node=root;
-        while (node.right!=null){
-            node=node.right;
+    public K max() {
+        Node node = root;
+        while (node.right != null) {
+            node = node.right;
         }
         return (K) node.k;
     }
 
-    public K min(){
-        Node node=root;
-        while (node.left!=null){
-            node=node.left;
+    public K min() {
+        Node node = root;
+        while (node.left != null) {
+            node = node.left;
         }
         return (K) node.k;
     }
@@ -246,6 +253,7 @@ public class RBTree<K extends Comparable<K>, V> {
     public int height() {
         return height(root);
     }
+
     private int height(Node x) {
         if (x == null) return -1;
         return 1 + Math.max(height(x.left), height(x.right));
