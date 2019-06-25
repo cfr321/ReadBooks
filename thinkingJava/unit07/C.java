@@ -13,6 +13,8 @@ public class C extends A{
     }
 
     public static void main(String[] args) {
+        AutoProxy autoProxy = new AutoProxy();
+        autoProxy.fun1();   //
         new C();
     }
 }

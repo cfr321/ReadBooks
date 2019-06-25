@@ -12,7 +12,7 @@ package thinkingJava.unit07;
 public class AutoProxy {
     private P p;
 
-    public void fun1() {
+    protected void fun1() { //protected 是有包访问权限的
         p.fun1();
     }
 
