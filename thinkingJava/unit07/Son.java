@@ -17,7 +17,7 @@ public class Son extends Fa{
 
     //静态没有多态
     public static void staticTest(){
-        System.out.println("Fa de static");
+        System.out.println("Fa unit05 static");
     }
 
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ class Fa{
     public int field=ss();
 
     public Fa() {
-        System.out.println("Fa de construct");
+        System.out.println("Fa unit05 construct");
     }
 
     void fun(){
@@ -52,6 +52,6 @@ class Fa{
         System.out.println("some thing");
     }
     public static void staticTest(){
-        System.out.println("Fa de static");
+        System.out.println("Fa unit05 static");
     }
 }

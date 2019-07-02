@@ -13,7 +13,7 @@ public class DynamicArray {
         System.out.println("se");
     }
     public static void main(String[] args) {
-        //Other.main(new String[]{"fiddle","de","dum"});
+        //Other.main(new String[]{"fiddle","unit05","dum"});
         Spiciness[] values = Spiciness.values();
     }
 }

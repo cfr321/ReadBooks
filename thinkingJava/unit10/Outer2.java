@@ -8,7 +8,7 @@ package thinkingJava.unit10;
 public class Outer2 {
     static class Inner{
         private void fun(){
-            System.out.println("inner de fun");
+            System.out.println("inner unit05 fun");
 
             // Outer2.this    编译错误
             Outer2 outer2 = new Outer2();
@@ -17,7 +17,7 @@ public class Outer2 {
     }
 
     private void fun2(){
-        System.out.println("outer de fun");
+        System.out.println("outer unit05 fun");
     }
 
     public static void main(String[] args) {

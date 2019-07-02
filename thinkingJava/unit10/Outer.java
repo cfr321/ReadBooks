@@ -9,7 +9,7 @@ public class Outer {
     private int aa=1;
 
     private void fun(){
-        System.out.println("outer de fun");
+        System.out.println("outer unit05 fun");
     }
     class Inner{
         private int aa=2;
@@ -21,12 +21,12 @@ public class Outer {
             System.out.println(this.aa); // 2
             System.out.println(Outer.this.aa);  //1
 
-            fun();       // "inner de fun"
-            Outer.this.fun(); // "outer de fun"
+            fun();       // "inner unit05 fun"
+            Outer.this.fun(); // "outer unit05 fun"
 
         }
         private void fun(){
-            System.out.println("inner de fun");
+            System.out.println("inner unit05 fun");
         }
     }
     {

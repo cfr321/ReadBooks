@@ -8,7 +8,7 @@ package thinkingJava.unit07;
 public class Frog extends Amphibian{
     @Override
     protected void fun() {
-        System.out.println("son de fun");
+        System.out.println("son unit05 fun");
     }
 
     public static void main(String[] args) {
@@ -20,6 +20,6 @@ public class Frog extends Amphibian{
 
 class Amphibian{
     protected void fun(){
-        System.out.println("mm de fun");
+        System.out.println("mm unit05 fun");
     }
 }
